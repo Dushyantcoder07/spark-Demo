@@ -1,0 +1,21 @@
+services:
+  airflow:
+    build: .
+
+    container_name: airflow
+
+    ports:
+      - "8080:8080"
+
+    command: standalone
+
+    environment:
+      AIRFLOW_CORE_LOAD_EXAMPLES: "False"
+      AIRFLOW__WEBSERVER__BASE_URL: "https://jubilant-spork-r4vg4qv4p76v2pj96-8080.app.github.dev"
+
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./data:/opt/airflow/data
+      - ./output:/opt/airflow/output

@@ -23,10 +23,13 @@ def user_login_and_listen():
     for message in consumer:
         alert_data = message.value
         if alert_data.get('userId') == user_id:
-            print("\n[CRITICAL ALERT]")
+            print("\n======================")
+            print("🚨 FRAUD ALERT 🚨")
+            print("======================")
             print(f"Name: {alert_data.get('name')}")
             print(f"Tx ID: {alert_data.get('tx_id')}")
-            print(f"Amount: ${alert_data.get('amount'):.2f}\n")
+            print(f"Amount: ₹{alert_data.get('amount'):.2f}")
+            print(f"Risk Level: {alert_data.get('risk_level')}\n")
 
 if __name__ == "__main__":
     user_login_and_listen()
